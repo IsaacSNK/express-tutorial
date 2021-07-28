@@ -1,5 +1,6 @@
-const DB = [
+export const DB = [
     {
+      "id": "1",
       "name": "Luke Skywalker",
       "height": "172",
       "mass": "77",
@@ -254,5 +255,3 @@ const DB = [
       "url": "https://swapi.dev/api/people/10/"
     }
   ];
-
-exports.DB = DB

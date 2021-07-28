@@ -1,9 +1,8 @@
-var express = require('express');
-const cors = require("cors")
-var express = require('express');
-const { DB } = require('./infrastructure/DB');
-const e = require('express');
- 
+import { DB } from "./infrastructure/DB.js";
+import cors from "cors"
+import express from "express";
+import { searchRecipes } from "./services/RecipeService.js";
+
 var app = express()
 app.use(express.json())
 app.use(cors());
@@ -23,6 +22,11 @@ app.get('/swpeople', function (req, res) {
       });
    }
 })
+
+app.get("/recipes", (req, res) => {
+   const result = searchRecipes(req.query.random === "true");
+   res.send(result);	
+});
 
 app.post('/login', function (req, res) {
    const { username, password } = req.body;
