@@ -1,7 +1,6 @@
 import { DB } from "./infrastructure/DB.js";
 import cors from "cors"
 import express from "express";
-import { searchRecipes } from "./services/RecipeService.js";
 
 var app = express()
 app.use(express.json())
@@ -22,20 +21,8 @@ app.get('/swpeople', function (req, res) {
       });
    }
 })
-
-app.get("/recipes", (req, res) => {
-   const result = searchRecipes(req.query.random === "true");
-   res.send(result);	
-});
-
-app.post('/login', function (req, res) {
-   const { username, password } = req.body;
-   console.log(username);
-   console.log(password);
-   res.send('welcome, ' + req.body.username)
-})
  
-var server = app.listen(80, function () {
+var server = app.listen(81, function () {
    var host = server.address().address
    var port = server.address().port
    
